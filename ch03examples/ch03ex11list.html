@@ -38,8 +38,23 @@
         // div 영역에 innerHTML을 이용해서 표 목록 만들기
 
         function deleteFn(self) {
-            console.dir(self.dataset["no"]);
-            console.log("deleteFn 호출...");
+            // console.log("deleteFn 호출...");
+            var no = Number(self.dataset["no"]);
+            // no는 Array(배열) index가 아니다.
+            // no를 이용해서 index를 찾는 함수가 있다. (findIndex())
+            var index = todoList.findIndex(function(todo) {
+                return todo.no == no;
+            });
+
+            // console.log('idex=>', index);
+            // 만약 요소가 없다면 -1이 반환 된다.
+            if(index != -1) {
+                // index위치를 지운다.
+                // array의 요를 splice()로 지운다.
+                todoList.splice(index, 1);
+                // 지운 후 다시 그리기
+                drawList();
+            }
         }
 
         function drawList() {
