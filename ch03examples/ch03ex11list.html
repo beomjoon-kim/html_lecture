@@ -46,8 +46,9 @@
             var html = "<table border='1'  class='table table-hover'>";
             todoList.forEach((todo) => {
                 html += `<tr>
+                            <td><input type="checkbox" checked></td>
                             <td>${todo['no']}</td>
-                            <td>${todo['title']}</td>
+                            <td><span style="text-decoration:line-through">${todo['title']}</span></td>
                             <td>${todo['done']}</td>
                             <td><button data-no="${todo['no']}" onclick="deleteFn(this)">DELETE</button></td>
                         </tr>`;
