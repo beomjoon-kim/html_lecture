@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+</head>
+<body>
+
+    <h1>Todo List</h1>
+    새일: <input type="text" id="newTodo" value="프로젝트 구상하기">
+    <button id="saveBtn">SAVE</button>
+    <hr>
+    <div id="todoListBox"></div>
+    
     <script>
         // 과제 2)
         // 새 파일에 구현 하기
@@ -17,10 +26,29 @@
         // forEach() 또는 for문, map() ...
         // div 영역에 innerHTML을 이용해서 표 목록 만들기
 
+        function drawList() {
+            var html = "<ul>";
+            todoList.forEach((todo) => {
+                html += `<li>${todo['no']}, ${todo['title']}, ${todo['done']}</li>`;
+            });
+            html += "</ul>";
+
+            //console.log(html);
+            document.getElementById("todoListBox").innerHTML = html;
+        }
+        // 최초에 목록 그리기.
+        drawList();
         
+        // 기능 추가:
+        // 저장버튼을 누르면 (이벤트 핸들러)
+        document.querySelector('#saveBtn').onclick = function(e) {
+            // console.log("저장 버튼 눌렀다.");
+            // input의 newTodo을 읽어와서 todoList 배열에 push한다.
+
+            // 목록을 다시 그린다.
+            drawList();
+        }
+
     </script>
-</head>
-<body>
-    
 </body>
 </html>
